@@ -8,7 +8,9 @@
 	    margin-right: 3px;}
 .bwizard-steps {
 	margin:0;
-	padding: 0;}
+	padding: 0;
+	display: inline-block;
+	background: #fff;}
 	.bwizard-steps li {
 	    display: inline-block;
 	    position: relative;
@@ -16,7 +18,7 @@
 	    line-height: 18px;
 	    list-style: none;
 	    padding: 12px 17px 10px 30px;
-	    background: #efefef }
+	    background: #efefef; }
 	.bwizard-steps li:first-child {
 	    -moz-border-radius: 4px 0 0 4px;
 	    -webkit-border-radius: 4px 0 0 4px;
@@ -27,7 +29,8 @@
 	.bwizard-steps li:last-child {
 	    -moz-border-radius: 0 4px 4px 0;
 	    -webkit-border-radius: 0 4px 4px 0;
-	    border-radius: 0 4px 4px 0; }
+	    border-radius: 0 4px 4px 0;
+	    margin-right: 0; }
 	.bwizard-steps li:last-child:after {
 	    border: none }
 	.bwizard-steps li:before {
