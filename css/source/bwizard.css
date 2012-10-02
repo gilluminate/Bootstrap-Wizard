@@ -52,3 +52,17 @@
 	    background: #007ACC; }
 	.bwizard-steps .current:after {
 	    border-left-color: #007ACC }
+@media (max-width: 480px) {
+	/*badges only on small screens*/
+		.bwizard-steps li,
+		.bwizard-steps li.current,
+		.bwizard-steps li:first-child,
+		.bwizard-steps li:last-child {
+			background-color: transparent;
+			padding: 0;
+			margin-right: 0px;}
+		.bwizard-steps li:after,
+		.bwizard-steps li:before {
+			border: none;
+		}
+}
