@@ -1,9 +1,9 @@
 ﻿bwizard {
-    position: relative }
+    position: relative; }
 .bwizard .well {
     margin: 3px 0 }
 .bwizard-buttons {
-    float: right }
+    float: right; }
 	.bwizard-buttons .btn:first-child {
 	    margin-right: 3px;}
 .bwizard-steps {
@@ -32,13 +32,13 @@
 	    border-radius: 0 4px 4px 0;
 	    margin-right: 0; }
 	.bwizard-steps li:last-child:after {
-	    border: none }
+	    border: none; }
 	.bwizard-steps li:before {
 	    position: absolute;
 	    left: 0; top: 0;
 	    height: 0px; width: 0px;
 	    border-bottom: 20px inset transparent; border-left: 20px solid #fff; border-top: 20px inset transparent;
-	    content: "" }
+	    content: ""; }
 	.bwizard-steps li:after {
 	    position: absolute;
 	    right: -20px; top: 0;
@@ -49,12 +49,12 @@
 	.bwizard-steps .badge {
 	    position: relative;
 	    top: -1px;
-	    margin: 0 5px 0 0 }
+	    margin: 0 5px 0 0; }
 	.bwizard-steps .current {
 	    color: #fff;
 	    background: #007ACC; }
 	.bwizard-steps .current:after {
-	    border-left-color: #007ACC }
+	    border-left-color: #007ACC; }
 @media (max-width: 480px) {
 	/*badges only on small screens*/
 		.bwizard-steps li,
