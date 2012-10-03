@@ -18,7 +18,8 @@
 	    line-height: 18px;
 	    list-style: none;
 	    padding: 12px 17px 10px 30px;
-	    background: #efefef; }
+	    background: #efefef;
+	    zoom:1; *display: inline; *padding-left: 17px; }
 	.bwizard-steps li:first-child {
 	    -moz-border-radius: 4px 0 0 4px;
 	    -webkit-border-radius: 4px 0 0 4px;

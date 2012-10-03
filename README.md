@@ -3,6 +3,8 @@
 
 Uses [Bootstrap](http://getbootstrap.com/) and [JQuery](https://github.com/jquery/jquery) to provide a highly customizable and powerful Wizard UI to your project. A wizard is used to display sections of content on separate, navigable pages so you can save screen real estate or simplify input tasks by creating a series of forms.
 
+Compatible IE7+, FF, Chrome, Safari
+
 Credits
 -------
 Modified from [Wijmo](https://github.com/wijmo/Wijmo-Complete) under GPLv3 to accomodate Bootstrap styles and functionality instead of JQueryUI and Wijmo Complete.
