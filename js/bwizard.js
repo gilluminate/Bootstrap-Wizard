@@ -101,13 +101,13 @@ $.widget("bootstrap.bwizard", {
 		/// Code example:
 		/// $("#element").bwizard("option", "backBtnText", "Back Button");
 		/// </summary>
-		backBtnText: 'back',
+		backBtnText: '&larr; Previous',
 		/// <summary>
 		/// A value that indicates the text of next button.
 		/// Code example:
 		/// $("#element").bwizard("option", "nextBtnText", "next Button");
 		/// </summary>
-		nextBtnText: 'next',
+		nextBtnText: 'Next &rarr;',
 		/// <summary>
 		/// The add event handler. A function called when a panel is added.
 		/// Default: null.
@@ -306,14 +306,12 @@ $.widget("bootstrap.bwizard", {
 		if (!this.buttons) {
 			bt = o.navButtons;
 
-			this.buttons = $('<div/>');
+			this.buttons = $('<ul class="pager"/>');
 			this.buttons.addClass('bwizard-buttons');
 
 			this.backBtn =
-				$("<a href='#'><i class='icon-chevron-left'></i> " +
-					backBtnText + "</a>")
-				.addClass('btn')
-				.addClass('btn-large')
+				$("<li class='previous'><a href='#'>" +
+					backBtnText + "</a></li>")
 				.appendTo(this.buttons).bind({
 					'click': function () {
 						self.back();
@@ -322,11 +320,8 @@ $.widget("bootstrap.bwizard", {
 				}).attr("role", "button");
 
 			this.nextBtn =
-				$("<a href='#'>" +
-					nextBtnText + " <i class='icon-chevron-right icon-white'></i></a>")
-				.addClass('btn')
-				.addClass('btn-primary')
-				.addClass('btn-large')
+				$("<li class='next'><a href='#'>" +
+					nextBtnText + "</a>")
 				.appendTo(this.buttons).bind({
 					'click': function () {
 						self.next();

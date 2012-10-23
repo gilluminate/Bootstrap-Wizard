@@ -2,10 +2,6 @@
     position: relative; }
 .bwizard .well {
     margin: 3px 0 }
-.bwizard-buttons {
-    float: right; }
-	.bwizard-buttons .btn:first-child {
-	    margin-right: 3px;}
 .bwizard-steps {
 	margin:0;
 	padding: 0;
