@@ -358,13 +358,13 @@ $.widget("bootstrap.bwizard", {
 			}
 			this.lis = $('li', this.list);
 			this.lis.each(function(){
-				$(this).find(".badge").remove();
+				$(this).find(".label").remove();
 				var i = $(this).index() + 1;
 				$(this).css('z-index',self.lis.length-i);
 				$(this).contents().wrap('<span class="hidden-phone"/>');
-				$(this).prepend('<span class="badge">' + i + '</span>');
+				$(this).prepend('<span class="label">' + i + '</span>');
 				if (!isOL) {
-					$(this).find('.badge').addClass('visible-phone');
+					$(this).find('.label').addClass('visible-phone');
 				}
 			});
 		}
@@ -462,10 +462,10 @@ $.widget("bootstrap.bwizard", {
 		var o = this.options;
 
 		if (this.lis) {
-			this.lis.removeClass('current').attr('aria-selected', false).find('.badge').removeClass('badge-inverse');
+			this.lis.removeClass('current').attr('aria-selected', false).find('.label').removeClass('badge-inverse');
 			if (o.activeIndex >= 0 && o.activeIndex <= this.lis.length - 1) {
 				if (this.lis) {
-					this.lis.eq(o.activeIndex).addClass('current').attr('aria-selected', true).find('.badge').addClass('badge-inverse');
+					this.lis.eq(o.activeIndex).addClass('current').attr('aria-selected', true).find('.label').addClass('badge-inverse');
 				}
 			}
 		}
