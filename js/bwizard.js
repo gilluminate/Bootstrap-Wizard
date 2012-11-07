@@ -308,27 +308,28 @@ $.widget("bootstrap.bwizard", {
 
 			this.buttons = $('<ul class="pager"/>');
 			this.buttons.addClass('bwizard-buttons');
-
-			this.backBtn =
-				$("<li class='previous'><a href='#'>" +
-					backBtnText + "</a></li>")
-				.appendTo(this.buttons).bind({
-					'click': function () {
-						self.back();
-						return false;
-					}
-				}).attr("role", "button");
-
-			this.nextBtn =
-				$("<li class='next'><a href='#'>" +
-					nextBtnText + "</a>")
-				.appendTo(this.buttons).bind({
-					'click': function () {
-						self.next();
-						return false;
-					}
-				}).attr("role", "button");
-
+			if(backBtnText != ''){
+				this.backBtn =
+					$("<li class='previous'><a href='#'>" +
+						backBtnText + "</a></li>")
+					.appendTo(this.buttons).bind({
+						'click': function () {
+							self.back();
+							return false;
+						}
+					}).attr("role", "button");
+			}
+			if(nextBtnText != ''){
+				this.nextBtn =
+					$("<li class='next'><a href='#'>" +
+						nextBtnText + "</a>")
+					.appendTo(this.buttons).bind({
+						'click': function () {
+							self.next();
+							return false;
+						}
+					}).attr("role", "button");
+			}
 			this.buttons.appendTo(this.element);
 		}
 	},
