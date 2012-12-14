@@ -220,7 +220,7 @@ The following events are available with the wizard:
 	* :ui - Type is "Object". The data that contains the related UI elements.
 	* ::ui.panel: The panel element.
 	* ::ui.index: The index of the panel.
-* Code example: ```$("#element").bwizard({ show: function (e, ui) { } });```
+* Code example: ```$("#element").bwizard({ validating: function (e, ui) { } });```
 
 Methods
 -------
