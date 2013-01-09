@@ -225,7 +225,8 @@ The following events are available with the wizard:
 Methods
 -------
 The following methods are available with the wizard. Methods are called passing the method name followed by parameters as comma seperated parameters passed to the bwizard() object.
-```$("#element").bwizard("method","param1","param2","param3");```
+
+Sample syntax: ```$("#element").bwizard("method","param1","param2","param3");```
 
 **abort**
 * The abort method terminates all running panel Ajax requests and animations.
