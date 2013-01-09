@@ -100,10 +100,10 @@ Options
 * Code example: ```$("#wizard").bwizard({cache: false});```
 
 **cookie**
-* The cookie option is a value that stores the latest active index in a cookie. The cookie is then used to determine the initially active index if the activedIndex option is not defined. This option requires a cookie plugin. The object needs to have key/value pairs of the form the cookie plugin expects as options. For example: { expires: 7, path: '/', domain: 'jquery.com', secure: true }
+* The cookie option is a value that stores the latest active index in a cookie. The cookie is then used to determine the initially active index if the activedIndex option is not defined. This option requires a cookie plugin. The object needs to have key/value pairs of the form the cookie plugin expects as options. For example: { expires: 7, path: '/', domain: 'mysite.com', secure: true }
 * Type: {}
 * Default: null 
-* Code example: ```$("#wizard").bwizard({cookie:{expires: 7, path: '/', domain:  'jquery.com', secure: true }})```
+* Code example: ```$("#wizard").bwizard({cookie:{expires: 7, path: '/', domain:  'mysite.com', secure: true }})```
 
 **delay**
 * The delay option determines the time span between displaying panels in autoplay mode.
@@ -176,7 +176,7 @@ The following events are available with the wizard:
 	* :ui - Type is "Object". The data that contains the related UI elements.
 	* ::ui.panel: The panel element.
 	* ::ui.index: The index of the panel.
-* Code example: ```$("#element").bwizard({ remove: function (e, ui) { } });```
+* Code example: ```$("#element").bwizard({ add: function (e, ui) { } });```
 
 **load**
 * The load event handler is a function called after the content of a remote panel has been loaded.
@@ -187,7 +187,7 @@ The following events are available with the wizard:
 	* :ui - Type is "Object". The data that contains the related UI elements.
 	* ::ui.panel: The panel element.
 	* ::ui.index: The index of the panel.
-* Code example: ```$("#element").bwizard({ validating: function (e, ui) { } });```
+* Code example: ```$("#element").bwizard({ load: function (e, ui) { } });```
 
 **remove**
 * The remove event handler is a function called when a panel is removed.
@@ -224,50 +224,61 @@ The following events are available with the wizard:
 
 Methods
 -------
-The following methods are available with the wizard:
+The following methods are available with the wizard. Methods are called passing the method name followed by parameters as comma seperated parameters passed to the bwizard() object.
+```$("#element").bwizard("method","param1","param2","param3");```
 
 **abort**
-* The abort() method terminates all running panel Ajax requests and animations.
+* The abort method terminates all running panel Ajax requests and animations.
+* Code example: ```$("#element").bwizard("abort");```
 
 **add**
-The add() method adds a new panel.
+The add method adds a new panel.
 * _Parameters_: 
 	* :index(number) - Zero-based position where to insert the new panel.
 	* :title (string) – The step title.
-	* :desc(string) - The step description.
+* Code example: ```$("#wizard").bwizard("add",2,"New Tab");```
 
 **back**
-The back() method moves to the previous panel.
+The back method moves to the previous panel.
+* Code example: ```$("#element").bwizard("back");```
 
 **count**
-The count() method retrieves the number of panels.
+The count method retrieves the number of panels.
+* Code example: ```var panelcount = $("#element").bwizard("count");```
 
 **load**
-* The load() method reloads the content of an Ajax panel programmatically.
+* The load method reloads the content of an Ajax panel programmatically.
 * _Parameters_: 
 	* :index(number) - The zero-based index of the panel to be loaded.
+* Code example: ```$("#element").bwizard("load",2);```
 
 **next**
-* The next() method moves to the next panel.
+* The next method moves to the next panel.
+* Code example: ```$("#element").bwizard("next");```
 
 **play**
-* The play() method begins displaying the panels in order automatically.
+* The play method begins displaying the panels in order automatically.
+* Code example: ```$("#element").bwizard("play");```
 
 **remove**
-* The remove() method removes a panel.
+* The remove method removes a panel.
 * _Parameters_:
 	* :index(number) - The zero-based index of the panel to be removed.
+* Code example: ```$("#element").bwizard("remove",2);```
 
 **show**
-* The show() method selects an active panel and displays the panel at a specified position.
+* The show method selects an active panel and displays the panel at a specified position.
 * _Parameters_: 
 	* :index(number) - The zero-based index of the panel to be selected.
+* Code example: ```$("#element").bwizard("show",3);```
 
 **stop**
-* The stop() method stops displaying the panels in order automatically.
+* The stop method stops displaying the panels in order automatically. (See the _play_ method.)
+* Code example: ```$("#element").bwizard("stop");```
 
 **url**
-* The url() method changes the URL from which an Ajax (remote) panel will be loaded.
+* The url method changes the URL from which an Ajax (remote) panel will be loaded.
 * _Parameters_: 
 	* :Index (number) - The zero-based index of the panel of which its URL is to be updated.
 	* :URL (string) - A URL the content of the panel is loaded from.
+* Code example: ```$("#element").bwizard("url",2,"./newinfo.html");```
