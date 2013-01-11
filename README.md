@@ -88,8 +88,8 @@ Options
 * Code example: ```$("#wizard").bwizard({autoPlay: true});```
 
 **backBtnText**
-* The backBtnText option defines the text for the wizard back button.
-* Type: Function
+* The backBtnText option defines the text for the wizard back button. Setting backBtnText to an empty string `""` will remove the back button.
+* Type: String
 * Default: 'back'
 * Code example: ```$("#wizard").bwizard({backBtnText: "Back Button"});```
 
@@ -124,8 +124,8 @@ Options
 * Code example: ```$("#wizard").bwizard({loop: false});```
 
 **nextBtnText**
-* The nextBtnText option defines the text for the wizard next button.
-* Type: Function
+* The nextBtnText option defines the text for the wizard next button. Setting nextBtnText to an empty string `""` will remove the next button.
+* Type: String
 * Default: 'next'
 * Code example: ```$("#wizard").bwizard({nextBtnText: "next Button"});```
 
