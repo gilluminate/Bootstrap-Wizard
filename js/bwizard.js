@@ -306,6 +306,7 @@ $.widget("bootstrap.bwizard", {
 		if (!this.buttons) {
 			bt = o.navButtons;
 
+			var requiresPager = false;
 			this.buttons = $('<ul class="pager"/>');
 			this.buttons.addClass('bwizard-buttons');
 			if(backBtnText != ''){
@@ -318,6 +319,7 @@ $.widget("bootstrap.bwizard", {
 							return false;
 						}
 					}).attr("role", "button");
+				var requiresPager = true;
 			}
 			if(nextBtnText != ''){
 				this.nextBtn =
@@ -329,8 +331,11 @@ $.widget("bootstrap.bwizard", {
 							return false;
 						}
 					}).attr("role", "button");
+				var requiresPager = true;
 			}
-			this.buttons.appendTo(this.element);
+			if(requiresPager) {
+				this.buttons.appendTo(this.element);
+			}
 		}
 	},
 
