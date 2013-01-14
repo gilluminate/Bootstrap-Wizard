@@ -53,6 +53,22 @@
 	    background: #007ACC; }
 		.bwizard-steps .active:after {
 		    border-left-color: #007ACC; }
+
+	.bwizard-steps a {
+		color: #333;}
+	.bwizard-steps .active a {
+	    color: #fff;
+		cursor: default;}
+	.bwizard-steps a:hover {
+		text-decoration: none;}
+	.bwizard-steps.clickable li:not(.active) {
+		cursor: pointer;}
+	.bwizard-steps.clickable li:hover:not(.active) {
+		background: #ccc;}
+	.bwizard-steps.clickable li:hover:not(.active) a {
+		color: #08c;}
+	.bwizard-steps.clickable li:hover:not(.active):after {
+		border-left-color: #ccc;}
 @media (max-width: 480px) {
 	/*badges only on small screens*/
 		.bwizard-steps li,

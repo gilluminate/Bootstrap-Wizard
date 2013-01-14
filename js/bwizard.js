@@ -283,20 +283,19 @@ $.widget("bootstrap.bwizard", {
 				isOL = true;
 			}
 			this.lis = $('li', this.list);
-			this.lis.each(function(){
-				var i = $(this).index() + 1;
+			this.lis.each(function(i){
 				if (o.clickableSteps){
 					$(this).click(function (args) {
 						args.preventDefault();
-						this.show(i);
+						self.show(i);
 					});
-					$(this).contents().wrap('<a href="#step' + i + '" class="hidden-phone"/>');
+					$(this).contents().wrap('<a href="#step' + (i+1) + '" class="hidden-phone"/>');
 				} else {
 					$(this).contents().wrap('<span class="hidden-phone"/>');
 				}
 				$(this).attr("role", "tab")
 				$(this).css('z-index',self.lis.length-i);
-				$(this).prepend('<span class="label">' + i + '</span>');
+				$(this).prepend('<span class="label">' + (i+1) + '</span>');
 				if (!isOL) {
 					$(this).find('.label').addClass('visible-phone');
 				}
@@ -307,6 +306,7 @@ $.widget("bootstrap.bwizard", {
 			this.panels = $('> div', this.element);
 
 			this.panels.each(function (i, p) {
+				$(this).attr('id', 'step'+(i+1))
 				var url = $(p).attr('src');
 				// inline
 				if (url && !fragmentId.test(url)) {
@@ -320,6 +320,9 @@ $.widget("bootstrap.bwizard", {
 				this.list
 					.addClass('bwizard-steps clearfix')
 					.attr("role", "tablist");
+				if (o.clickableSteps){
+					this.list.addClass('clickable')
+				}
 			}
 			this.container = $('<div/>');
 			this.container.addClass('well');

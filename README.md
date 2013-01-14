@@ -99,6 +99,12 @@ Options
 * Default: false
 * Code example: ```$("#wizard").bwizard({cache: false});```
 
+**clickableSteps**
+* Determines whether step tabs are clickable
+* Type: Boolean
+* Default: true
+* Code example ```$("#wizard").bwizard({clickableSteps: false});```
+
 **cookie**
 * The cookie option is a value that stores the latest active index in a cookie. The cookie is then used to determine the initially active index if the activedIndex option is not defined. This option requires a cookie plugin. The object needs to have key/value pairs of the form the cookie plugin expects as options. For example: { expires: 7, path: '/', domain: 'mysite.com', secure: true }
 * Type: {}
