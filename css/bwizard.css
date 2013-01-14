@@ -48,15 +48,15 @@
 		padding: 1px 5px 2px;
 		position: relative;
 		top: -1px;}
-	.bwizard-steps .current {
+	.bwizard-steps .active {
 	    color: #fff;
 	    background: #007ACC; }
-		.bwizard-steps .current:after {
+		.bwizard-steps .active:after {
 		    border-left-color: #007ACC; }
 @media (max-width: 480px) {
 	/*badges only on small screens*/
 		.bwizard-steps li,
-		.bwizard-steps li.current,
+		.bwizard-steps li.active,
 		.bwizard-steps li:first-child,
 		.bwizard-steps li:last-child {
 			background-color: transparent;

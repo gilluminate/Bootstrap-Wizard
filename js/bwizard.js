@@ -366,6 +366,7 @@ $.widget("bootstrap.bwizard", {
 			}
 			this.lis = $('li', this.list);
 			this.lis.each(function(){
+				$(this).attr("role", "tab")
 				$(this).find(".label").remove();
 				var i = $(this).index() + 1;
 				$(this).css('z-index',self.lis.length-i);
@@ -393,8 +394,7 @@ $.widget("bootstrap.bwizard", {
 			if (this.list) {
 				this.list
 					.addClass('bwizard-steps clearfix')
-					.attr("role", "tablist")
-					.attr("role", "tab");
+					.attr("role", "tablist");
 			}
 			this.container = $('<div/>');
 			this.container.addClass('well');
@@ -470,10 +470,10 @@ $.widget("bootstrap.bwizard", {
 		var o = this.options;
 
 		if (this.lis) {
-			this.lis.removeClass('current').attr('aria-selected', false).find('.label').removeClass('badge-inverse');
+			this.lis.removeClass('active').attr('aria-selected', false).find('.label').removeClass('badge-inverse');
 			if (o.activeIndex >= 0 && o.activeIndex <= this.lis.length - 1) {
 				if (this.lis) {
-					this.lis.eq(o.activeIndex).addClass('current').attr('aria-selected', true).find('.label').addClass('badge-inverse');
+					this.lis.eq(o.activeIndex).addClass('active').attr('aria-selected', true).find('.label').addClass('badge-inverse');
 				}
 			}
 		}
@@ -541,7 +541,7 @@ $.widget("bootstrap.bwizard", {
 		}
 
 		if (this.lis) {
-			this.lis.removeClass('current').removeAttr('role');
+			this.lis.removeClass('active').removeAttr('role');
 			this.lis.each(function () {
 				if ($.data(this, 'destroy.bwizard')) {
 					$(this).remove();
