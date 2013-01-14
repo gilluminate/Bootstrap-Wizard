@@ -335,6 +335,8 @@ $.widget("bootstrap.bwizard", {
 			}
 			if(requiresPager) {
 				this.buttons.appendTo(this.element);
+			} else {
+				this.buttons = null;
 			}
 		}
 	},
