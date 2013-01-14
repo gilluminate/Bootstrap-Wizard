@@ -32,172 +32,90 @@
 
 (function( $, undefined ) {
 $.widget("bootstrap.bwizard", {
+	//default option values
 	options: {
-		/// <summary>
-		/// Determines whether panels are automatically displayed in order.
-		/// </summary>
+			// Determines whether panels are automatically displayed in order.
 		autoPlay: false,
-		/// <summary>
-		/// Determines the time span between panels in autoplay mode.
-		/// </summary>
+			// Determines the time span between panels in autoplay mode.
 		delay: 3000,
-		/// <summary>
-		/// Determines whether start from the first panel
-		/// when reaching the end in autoplay mode.
-		/// </summary>
+			// Determines whether start from the first panel
+			// when reaching the end in autoplay mode.
 		loop: false,
-		/// <summary>
-		/// This is an animation option for hiding the panel content.
-		/// </summary>
-		// e.g. { blind: true, fade: true, duration: 200}
+			// This is an animation option for hiding the panel content.
+			// e.g. { blind: true, fade: true, duration: 200}
 		hideOption: { fade: true },
-		/// <summary>
-		/// This is an animation option for showing the panel content.
-		/// </summary>
-		// e.g. { blind: true, fade: true, duration: 200}
+			// This is an animation option for showing the panel content.
+			// e.g. { blind: true, fade: true, duration: 200}
 		showOption: { fade: true, duration: 400 },
-		/// <summary>
-		/// Additional Ajax options to consider when
-		/// loading panel content (see $.ajax).
-		/// </summary>
+			// Additional Ajax options to consider when
+			// loading panel content (see $.ajax).
 		ajaxOptions: null,
-		/// <summary>
-		/// Whether or not to cache remote bwizard content;
-		/// Cached content is being lazy loaded; e.g once and
-		/// only once for the panel is displayed.
-		/// Note that to prevent the actual Ajax requests from being cached
-		/// by the browser you need to provide an extra cache:
-		/// false flag to ajaxOptions.
-		/// </summary>
+			// Whether or not to cache remote bwizard content;
+			// Cached content is being lazy loaded; e.g once and
+			// only once for the panel is displayed.
+			// Note that to prevent the actual Ajax requests from being cached
+			// by the browser you need to provide an extra cache:
+			// false flag to ajaxOptions.
 		cache: false,
-		/// <summary>
-		/// Store the latest active index in a cookie.
-		/// The cookie is then used to determine the initially active index
-		/// if the activeIndex option is not defined.
-		/// Requires cookie plugin. The object needs to have key/value pairs
-		/// of the form the cookie plugin expects as options.
-		/// </summary>
-		// e.g. { expires: 7, path: '/', domain: 'jquery.com', secure: true }
+			// Store the latest active index in a cookie.
+			// The cookie is then used to determine the initially active index
+			// if the activeIndex option is not defined.
+			// Requires cookie plugin. The object needs to have key/value pairs
+			// of the form the cookie plugin expects as options.
+			// e.g. { expires: 7, path: '/', domain: 'jquery.com', secure: true }
 		cookie: null,
-		/// <summary>
-		/// HTML template for step header when a new panel is added with the
-		/// add method or  when creating a panel for a remote panel on the fly.
-		/// </summary>
+			// HTML template for step header when a new panel is added with the
+			// add method or  when creating a panel for a remote panel on the fly.
 		stepHeaderTemplate: '',
-		/// <summary>
-		/// HTML template from which a new panel is created
-		/// by adding a panel with the add method or
-		/// when creating a panel for a remote panel on the fly.
-		/// </summary>
+			// HTML template from which a new panel is created
+			// by adding a panel with the add method or
+			// when creating a panel for a remote panel on the fly.
 		panelTemplate: '',
-		/// <summary>
-		/// The HTML content of this string is shown in a panel
-		/// while remote content is loading.
-		/// Pass in empty string to deactivate that behavior.
-		/// </summary>
+			// The HTML content of this string is shown in a panel
+			// while remote content is loading.
+			// Pass in empty string to deactivate that behavior.
 		spinner: '',
-		/// <summary>
-		/// A value that indicates the text of back button.
-		/// Code example:
-		/// $("#element").bwizard("option", "backBtnText", "Back Button");
-		/// </summary>
+			// A value that indicates the text of back button.
+			// Code example:
+			// $("#element").bwizard("option", "backBtnText", "Back Button");
 		backBtnText: '&larr; Previous',
-		/// <summary>
-		/// A value that indicates the text of next button.
-		/// Code example:
-		/// $("#element").bwizard("option", "nextBtnText", "next Button");
-		/// </summary>
+			// A value that indicates the text of next button.
+			// Code example:
+			// $("#element").bwizard("option", "nextBtnText", "next Button");
 		nextBtnText: 'Next &rarr;',
-		/// <summary>
-		/// The add event handler. A function called when a panel is added.
-		/// Default: null.
-		/// Type: Function.
-		/// Code example: $("#element").bwizard({ add: function (e, ui) { } });
-		/// </summary>
-		///
-		/// <param name="e" type="Object">jQuery.Event object.</param>
-		/// <param name="ui" type="Object">
-		/// The data that contains the related ui elements.
-		/// ui.panel: The panel element.
-		/// ui.index: The index of the panel.
-		///</param>
+			// The add event handler. A function called when a panel is added.
+			// Default: null.
+			// Type: Function.
+			// Code example: $("#element").bwizard({ add: function (e, ui) { } });
 		add: null,
-		/// <summary>
-		/// The remove event handler. A function called when a panel is removed.
-		/// Default: null.
-		/// Type: Function.
-		/// Code example: $("#element").bwizard({ remove: function (e, ui) { } });
-		/// </summary>
-		///
-		/// <param name="e" type="Object">jQuery.Event object.</param>
-		/// <param name="ui" type="Object">
-		/// The data that contains the related ui elements.
-		/// ui.panel: The panel element.
-		/// ui.index: The index of the panel.
-		///</param>
+			// The remove event handler. A function called when a panel is removed.
+			// Default: null.
+			// Type: Function.
+			// Code example: $("#element").bwizard({ remove: function (e, ui) { } });
 		remove: null,
-		/// <summary>
-		/// The activeIndexChanged event handler.
-		/// A function called when the activeIndex changed.
-		/// Default: null.
-		/// Type: Function.
-		/// Code example:
-		/// $("#element").bwizard({ activeIndexChanged: function (e, ui) { } });
-		/// </summary>
-		///
-		/// <param name="e" type="Object">jQuery.Event object.</param>
-		/// <param name="ui" type="Object">
-		/// The data that contains the related ui elements.
-		/// ui.panel: The panel element.
-		/// ui.index: The index of the panel.
-		///</param>
+			// The activeIndexChanged event handler.
+			// A function called when the activeIndex changed.
+			// Default: null.
+			// Type: Function.
+			// Code example:
+			// $("#element").bwizard({ activeIndexChanged: function (e, ui) { } });
 		activeIndexChanged: null,
-		/// <summary>
-		/// The show event handler. A function called when a panel is shown.
-		/// Default: null.
-		/// Type: Function.
-		/// Code example: $("#element").bwizard({ show: function (e, ui) { } });
-		/// </summary>
-		///
-		/// <param name="e" type="Object">jQuery.Event object.</param>
-		/// <param name="ui" type="Object">
-		/// The data that contains the related ui elements.
-		/// ui.panel: The panel element.
-		/// ui.index: The index of the panel.
-		///</param>
+			// The show event handler. A function called when a panel is shown.
+			// Default: null.
+			// Type: Function.
+			// Code example: $("#element").bwizard({ show: function (e, ui) { } });
 		show: null,
-		/// <summary>
-		/// The load event handler.
-		/// A function called after the content of a remote panel has been loaded.
-		/// Default: null.
-		/// Type: Function.
-		/// Code example: $("#element").bwizard({ load: function (e, ui) { } });
-		/// </summary>
-		///
-		/// <param name="e" type="Object">jQuery.Event object.</param>
-		/// <param name="ui" type="Object">
-		/// The data that contains the related ui elements.
-		/// ui.panel: The panel element.
-		/// ui.index: The index of the panel.
-		///</param>
+			// The load event handler.
+			// A function called after the content of a remote panel has been loaded.
+			// Default: null.
+			// Type: Function.
+			// Code example: $("#element").bwizard({ load: function (e, ui) { } });
 		load: null,
-		/// <summary>
-		/// The validating event handler.
-		/// A function called before moving to next panel. Cancellable.
-		/// Default: null.
-		/// Type: Function.
-		/// Code example:
-		/// $("#element").bwizard({ validating: function (e, ui) { } });
-		/// </summary>
-		///
-		/// <param name="e" type="Object">jQuery.Event object.</param>
-		/// <param name="ui" type="Object">
-		/// The data that contains the related ui elements.
-		/// ui.panel: The panel element.
-		/// ui.index: The index of the panel.
-		/// ui.nextPanel: The next panel element.
-		/// ui.nextIndex: The index of the next panel.
-		///</param>
+			// The validating event handler.
+			// A function called before moving to next panel. Cancellable.
+			// Default: null.
+			// Type: Function.
+			// Code example: $("#element").bwizard({ validating: function (e, ui) { } });
 		validating: null
 	},
 
@@ -244,7 +162,7 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	play: function () {
-		/// <summary>Start displaying the panels in order automatically.</summary>
+	art displaying the panels in order automatically.</summary>
 		var o = this.options, self = this, id;
 		if (!this.element.data('intId.bwizard')) {
 			id = window.setInterval(function () {
@@ -265,7 +183,7 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	stop: function () {
-		/// <summary>Stop automatic displaying.</summary>
+	op automatic displaying.</summary>
 		var id = this.element.data('intId.bwizard');
 		if (id) {
 			window.clearInterval(id);
@@ -578,11 +496,6 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	add: function (index, title) {
-		/// <summary>Add a new panel.</summary>
-		/// <param name="index" type="Number">
-		/// Zero-based position where to insert the new panel.
-		/// </param>
-		/// <param name="title" type="String">The step title.</param>
 		if (index === undefined) {
 			index = this.panels.length; // append by default
 		}
@@ -643,10 +556,6 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	remove: function (index) {
-		/// <summary>Remove a panel.</summary>
-		/// <param name="index" type="Number">
-		/// The zero-based index of the panel to be removed.
-		/// </param>
 		var o = this.options,
 			//$li = this.lis.eq(index).remove(),
 			$panel = this.panels.eq(index).remove();
@@ -718,10 +627,6 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	show: function (index) {
-		/// <summary>Active and display the panel at specified position.</summary>
-		/// <param name="index" type="Number">
-		/// The zero-based index of the panel to be actived.
-		/// </param>
 		if (index < 0 || index >= this.panels.length) {
 			return this;
 		}
@@ -773,7 +678,7 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	next: function () {
-		/// <summary>Moves to the next panel.</summary>
+	ves to the next panel.</summary>
 		var o = this.options,
 			index = o.activeIndex + 1;
 		if (o.disabled) {
@@ -791,7 +696,7 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	back: function () {
-		/// <summary>Moves to the previous panel.</summary>
+	ves to the previous panel.</summary>
 		var o = this.options,
 			index = o.activeIndex - 1;
 		if (o.disabled) {
@@ -809,10 +714,6 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	load: function (index) {
-		/// <summary>Reload the content of an Ajax panel programmatically.</summary>
-		/// <param name="index" type="Number">
-		/// The zero-based index of the panel to be loaded
-		/// </param>
 		var self = this,
 			o = this.options,
 			p = this.panels.eq(index)[0],
@@ -881,9 +782,7 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	abort: function () {
-		/// <summary>
-		/// Terminate all running panel ajax requests and animations.
-		/// </summary>
+		// Terminate all running panel ajax requests and animations.
 		this.element.queue([]);
 		this.panels.stop(false, true);
 
@@ -904,22 +803,13 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	url: function (index, url) {
-		/// <summary>
-		/// Change the url from which an Ajax (remote) panel will be loaded.
-		/// </summary>
-		/// <param name="index" type="Number">
-		/// The zero-based index of the panel of which its URL is to be updated.
-		/// </param>
-		/// <param name="url" type="String">
-		/// A URL the content of the panel is loaded from.
-		/// </param>
 		this.panels.eq(index).removeData('cache.bwizard')
 			.data('load.bwizard', url);
 		return this;
 	},
 
 	count: function () {
-		/// <summary>Retrieve the number panels.</summary>
+		rieve the number panels.</summary>
 		return this.panels.length;
 	}
 
