@@ -34,6 +34,8 @@
 $.widget("bootstrap.bwizard", {
 	//default option values
 	options: {
+			// Determines whether step tabs are clickable
+		clickableSteps: true,
 			// Determines whether panels are automatically displayed in order.
 		autoPlay: false,
 			// Determines the time span between panels in autoplay mode.
@@ -162,7 +164,6 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	play: function () {
-	art displaying the panels in order automatically.</summary>
 		var o = this.options, self = this, id;
 		if (!this.element.data('intId.bwizard')) {
 			id = window.setInterval(function () {
@@ -183,7 +184,6 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	stop: function () {
-	op automatic displaying.</summary>
 		var id = this.element.data('intId.bwizard');
 		if (id) {
 			window.clearInterval(id);
@@ -284,11 +284,18 @@ $.widget("bootstrap.bwizard", {
 			}
 			this.lis = $('li', this.list);
 			this.lis.each(function(){
-				$(this).attr("role", "tab")
-				$(this).find(".label").remove();
 				var i = $(this).index() + 1;
+				if (o.clickableSteps){
+					$(this).click(function (args) {
+						args.preventDefault();
+						this.show(i);
+					});
+					$(this).contents().wrap('<a href="#step' + i + '" class="hidden-phone"/>');
+				} else {
+					$(this).contents().wrap('<span class="hidden-phone"/>');
+				}
+				$(this).attr("role", "tab")
 				$(this).css('z-index',self.lis.length-i);
-				$(this).contents().wrap('<span class="hidden-phone"/>');
 				$(this).prepend('<span class="label">' + i + '</span>');
 				if (!isOL) {
 					$(this).find('.label').addClass('visible-phone');
@@ -678,7 +685,6 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	next: function () {
-	ves to the next panel.</summary>
 		var o = this.options,
 			index = o.activeIndex + 1;
 		if (o.disabled) {
@@ -696,7 +702,6 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	back: function () {
-	ves to the previous panel.</summary>
 		var o = this.options,
 			index = o.activeIndex - 1;
 		if (o.disabled) {
@@ -809,7 +814,6 @@ $.widget("bootstrap.bwizard", {
 	},
 
 	count: function () {
-		rieve the number panels.</summary>
 		return this.panels.length;
 	}
 
