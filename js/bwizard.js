@@ -23,7 +23,7 @@
 
 
 /*!
- * Bootstrap Widget plugin
+ * Bootstrap Wizard plugin
  *
  * Licensed under the GPL license:
  * http://www.gnu.org/licenses/gpl.html
@@ -534,8 +534,7 @@ $.widget("bootstrap.bwizard", {
 		if (this.list && this.lis) {
 			$li = $((o.stepHeaderTemplate || self._defaults.stepHeaderTemplate)
 				.replace(/#\{title\}/g, title));
-			$li.addClass('ui-widget-header ui-corner-all ui-priority-secondary')
-				.data('destroy.bwizard', true);
+			$li.data('destroy.bwizard', true);
 
 			if (index >= this.lis.length) {
 				$li.appendTo(this.list);
