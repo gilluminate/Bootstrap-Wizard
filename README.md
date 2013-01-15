@@ -2,13 +2,22 @@
 NOTE!
 This project will no longer be maintained.
 
-I am in the process of working with @VinceG to combine the functionality of this plugin with his https://github.com/VinceG/twitter-bootstrap-wizard
+I am in the process of working with @VinceG to combine the functionality
+of this plugin with his https://github.com/VinceG/twitter-bootstrap-wizard
 
-Because my plugin was really a port from a JQuery UI/Wijmo plugin, I feel that it is far from optimal for use with Bootstrap. It does it's job. But it has a lot of overhead and baggage from the aforementioned projects that I'm not font of.
+Because my plugin was really a port from a JQuery UI/Wijmo plugin, I feel
+that it is far from optimal for use with Bootstrap. It does it's job. But
+it has a lot of overhead and baggage from the aforementioned projects that
+I'm not fond of.
 
-Vince's project, on the other hand, is built from the ground up with the spirit of Bootstrap built in from the get go. I've already contributed some pull requests and plan to work more on contributing to it, rather than to continue duplicating our efforts and trying to force this plugin into something it's not.
+Vince's project, on the other hand, is built from the ground up with the 
+spirit of Bootstrap built in from the get go. I've already contributed 
+some pull requests and plan to work more on contributing to it, rather than 
+to continue duplicating our efforts and trying to force this plugin into 
+something it's not.
 
-If you would like to make sure your favorite features in this plugin make it over to that plugin I urge you to start following @VinceG's project.
+If you would like to make sure your favorite features in this plugin make 
+it over to that plugin I urge you to start following @VinceG's project.
 ```
 
 
