@@ -1,3 +1,17 @@
+```
+NOTE!
+This project will no longer be maintained.
+
+I am in the process of working with @VinceG to combine the functionality of this plugin with his https://github.com/VinceG/twitter-bootstrap-wizard
+
+Because my plugin was really a port from a JQuery UI/Wijmo plugin, I feel that it is far from optimal for use with Bootstrap. It does it's job. But it has a lot of overhead and baggage from the aforementioned projects that I'm not font of.
+
+Vince's project, on the other hand, is built from the ground up with the spirit of Bootstrap built in from the get go. I've already contributed some pull requests and plan to work more on contributing to it, rather than to continue duplicating our efforts and trying to force this plugin into something it's not.
+
+If you would like to make sure your favorite features in this plugin make it over to that plugin I urge you to start following @VinceG's project.
+```
+
+
 [Bootstrap Wizard](https://github.com/gilluminate/Bootstrap-Wizard)
 ================
 
@@ -94,7 +108,7 @@ Options
 * Code example: ```$("#wizard").bwizard({backBtnText: "Back Button"});```
 
 **cache**
-* An option that determines whether to cache remote wijwizard content. Cached content is being lazy loaded, for example once and only once for the panel is displayed.  Note that to prevent the actual Ajax requests from being cached by the browser, you need to provide an extra cache: false flag to ajaxOptions.
+* An option that determines whether to cache remote bwizard content. Cached content is being lazy loaded, for example once and only once for the panel is displayed.  Note that to prevent the actual Ajax requests from being cached by the browser, you need to provide an extra cache: false flag to ajaxOptions.
 * Type: Boolean
 * Default: false
 * Code example: ```$("#wizard").bwizard({cache: false});```
@@ -171,7 +185,7 @@ The following events are available with the wizard:
 * _Parameters_:
 	* :e - Type is "Object". jQuery.Event object.
 	* :ui - Type is "Object". The data that contains the related UI elements.
-* Code example: ```$("#element").bwizard({ activeIndexChanged: function (e, ui) { } });```
+* Code example: ```$("#wizard").bwizard({ activeIndexChanged: function (e, ui) { } });```
 
 **add**
 * The add event handler is a function called when a panel is added.
@@ -182,7 +196,7 @@ The following events are available with the wizard:
 	* :ui - Type is "Object". The data that contains the related UI elements.
 	* ::ui.panel: The panel element.
 	* ::ui.index: The index of the panel.
-* Code example: ```$("#element").bwizard({ add: function (e, ui) { } });```
+* Code example: ```$("#wizard").bwizard({ add: function (e, ui) { } });```
 
 **load**
 * The load event handler is a function called after the content of a remote panel has been loaded.
@@ -193,7 +207,7 @@ The following events are available with the wizard:
 	* :ui - Type is "Object". The data that contains the related UI elements.
 	* ::ui.panel: The panel element.
 	* ::ui.index: The index of the panel.
-* Code example: ```$("#element").bwizard({ load: function (e, ui) { } });```
+* Code example: ```$("#wizard").bwizard({ load: function (e, ui) { } });```
 
 **remove**
 * The remove event handler is a function called when a panel is removed.
@@ -204,7 +218,7 @@ The following events are available with the wizard:
 	* :ui - Type is "Object". The data that contains the related UI elements.
 	* ::ui.panel: The panel element.
 	* ::ui.index: The index of the panel.
-* Code example: ```$("#element").bwizard({ remove: function (e, ui) { } });```
+* Code example: ```$("#wizard").bwizard({ remove: function (e, ui) { } });```
 			
 **show**
 * The show event handler is a function called when a panel is shown.
@@ -215,7 +229,7 @@ The following events are available with the wizard:
 	* :ui - Type is "Object". The data that contains the related UI elements.
 	* ::ui.panel: The panel element.
 	* ::ui.index: The index of the panel.
-* Code example: ```$("#element").bwizard({ show: function (e, ui) { } });```
+* Code example: ```$("#wizard").bwizard({ show: function (e, ui) { } });```
 
 **validating**
 * The validating event handler is a function called before moving to the next panel. This event is cancelable.
@@ -226,17 +240,17 @@ The following events are available with the wizard:
 	* :ui - Type is "Object". The data that contains the related UI elements.
 	* ::ui.panel: The panel element.
 	* ::ui.index: The index of the panel.
-* Code example: ```$("#element").bwizard({ validating: function (e, ui) { } });```
+* Code example: ```$("#wizard").bwizard({ validating: function (e, ui) { } });```
 
 Methods
 -------
 The following methods are available with the wizard. Methods are called passing the method name followed by parameters as comma seperated parameters passed to the bwizard() object.
 
-Sample syntax: ```$("#element").bwizard("method","param1","param2","param3");```
+Sample syntax: ```$("#wizard").bwizard("method","param1","param2","param3");```
 
 **abort**
 * The abort method terminates all running panel Ajax requests and animations.
-* Code example: ```$("#element").bwizard("abort");```
+* Code example: ```$("#wizard").bwizard("abort");```
 
 **add**
 The add method adds a new panel.
@@ -247,45 +261,45 @@ The add method adds a new panel.
 
 **back**
 The back method moves to the previous panel.
-* Code example: ```$("#element").bwizard("back");```
+* Code example: ```$("#wizard").bwizard("back");```
 
 **count**
 The count method retrieves the number of panels.
-* Code example: ```var panelcount = $("#element").bwizard("count");```
+* Code example: ```var panelcount = $("#wizard").bwizard("count");```
 
 **load**
 * The load method reloads the content of an Ajax panel programmatically.
 * _Parameters_: 
 	* :index(number) - The zero-based index of the panel to be loaded.
-* Code example: ```$("#element").bwizard("load",2);```
+* Code example: ```$("#wizard").bwizard("load",2);```
 
 **next**
 * The next method moves to the next panel.
-* Code example: ```$("#element").bwizard("next");```
+* Code example: ```$("#wizard").bwizard("next");```
 
 **play**
 * The play method begins displaying the panels in order automatically.
-* Code example: ```$("#element").bwizard("play");```
+* Code example: ```$("#wizard").bwizard("play");```
 
 **remove**
 * The remove method removes a panel.
 * _Parameters_:
 	* :index(number) - The zero-based index of the panel to be removed.
-* Code example: ```$("#element").bwizard("remove",2);```
+* Code example: ```$("#wizard").bwizard("remove",2);```
 
 **show**
 * The show method selects an active panel and displays the panel at a specified position.
 * _Parameters_: 
 	* :index(number) - The zero-based index of the panel to be selected.
-* Code example: ```$("#element").bwizard("show",3);```
+* Code example: ```$("#wizard").bwizard("show",3);```
 
 **stop**
 * The stop method stops displaying the panels in order automatically. (See the _play_ method.)
-* Code example: ```$("#element").bwizard("stop");```
+* Code example: ```$("#wizard").bwizard("stop");```
 
 **url**
 * The url method changes the URL from which an Ajax (remote) panel will be loaded.
 * _Parameters_: 
 	* :Index (number) - The zero-based index of the panel of which its URL is to be updated.
 	* :URL (string) - A URL the content of the panel is loaded from.
-* Code example: ```$("#element").bwizard("url",2,"./newinfo.html");```
+* Code example: ```$("#wizard").bwizard("url",2,"./newinfo.html");```
