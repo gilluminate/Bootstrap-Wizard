@@ -300,7 +300,7 @@ The count method retrieves the number of panels.
 * The show method selects an active panel and displays the panel at a specified position.
 * _Parameters_: 
 	* :index(number) - The zero-based index of the panel to be selected.
-* Code example: ```$("#wizard").bwizard("show",3);```
+* Code example: ```$("#wizard").bwizard("show","3");```
 
 **stop**
 * The stop method stops displaying the panels in order automatically. (See the _play_ method.)
