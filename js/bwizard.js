@@ -688,7 +688,7 @@ $.widget("bootstrap.bwizard", {
 
 	next: function () {
 		var o = this.options,
-			index = o.activeIndex + 1;
+			index = parseInt(o.activeIndex, 10) + 1;
 		if (o.disabled) {
 			return false;
 		}
@@ -705,7 +705,7 @@ $.widget("bootstrap.bwizard", {
 
 	back: function () {
 		var o = this.options,
-			index = o.activeIndex - 1;
+			index = parseInt(o.activeIndex, 10) - 1;
 		if (o.disabled) {
 			return false;
 		}
